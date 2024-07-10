@@ -27,6 +27,7 @@ resource "azurerm_network_interface" "example" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.example.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.example.id
   }
 }
 
@@ -81,4 +82,11 @@ resource "azurerm_network_security_rule" "example" {
 resource "azurerm_subnet_network_security_group_association" "example" {
   subnet_id                 = azurerm_subnet.example.id
   network_security_group_id = azurerm_network_security_group.example.id
+}
+
+resource "azurerm_public_ip" "example" {
+  name                = "${var.vm_name}-pip"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  allocation_method   = "Dynamic"
 }
