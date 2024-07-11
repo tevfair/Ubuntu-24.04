@@ -30,6 +30,9 @@ on: workflow_dispatch
   
 
 permissions:
+  id-token: write
+  issues: write
+  pull-requests: write
   contents: read
 
 jobs:
@@ -53,11 +56,14 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       with:
         cli_config_credentials_token: ${{ secrets.TERRAFORM_API_KEY }}
+    
     - name: Azure login
       uses: azure/login@v2
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-        AZURE_CORE_OUTPUT: none
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
