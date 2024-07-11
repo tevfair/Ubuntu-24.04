@@ -23,12 +23,11 @@
 
 name: 'Terraform-Ubuntu-24.04'
 
-
-on:
+on: workflow_dispatch
   # push:
   #   branches: [ "main" ]
   # pull_request:
-  workflow_dispatch:
+  
 
 permissions:
   contents: read
