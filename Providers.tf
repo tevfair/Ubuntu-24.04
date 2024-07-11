@@ -1,5 +1,8 @@
 provider "azurerm" {
-  features {}
+  features {
+  }
+use_oidc = true
+
 }
 
 #     # The configuration for the `remote` backend.
