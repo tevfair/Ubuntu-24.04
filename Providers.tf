@@ -7,6 +7,14 @@ use_oidc = true
 
 #     # The configuration for the `remote` backend.
 terraform {
+
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "3.111.0"
+    }
+  }
+
   cloud {
     organization = "Patient-1"
 
