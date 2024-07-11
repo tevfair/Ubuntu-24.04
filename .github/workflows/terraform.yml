@@ -56,7 +56,9 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       with:
         cli_config_credentials_token: ${{ secrets.TERRAFORM_API_KEY }}
-    
+    - name: Setup Azure CLI
+      uses: azure/setup-azcli@v1
+
     - name: Azure login
       uses: azure/login@v2
       with:
