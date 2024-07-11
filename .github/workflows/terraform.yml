@@ -70,6 +70,10 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az account show
+    - shell: bash
+      run: |
+        ls -a
+        pwd
 
     # # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     # - name: Terraform Init
