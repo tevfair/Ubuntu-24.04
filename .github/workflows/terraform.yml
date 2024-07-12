@@ -56,13 +56,13 @@ jobs:
       working-directory: ${{github.workspace}}
 
           # Generates an execution plan for Terraform
-    - name: Terraform Plan
+    - name: Terraform Apply
       id: apply
       run: terraform apply --auto-approve
       # continue-on-error: true
       working-directory: ${{github.workspace}}
 
-    - name: Terraform Plan
+    - name: Terraform Destroy
       id: destroy
       run: terraform destroy --auto-approve
       # continue-on-error: true
